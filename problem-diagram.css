@@ -1,0 +1,431 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #3b82f6;
+    --secondary: #8b5cf6;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --success: #10b981;
+    --text-dark: #1f2937;
+    --text-medium: #4b5563;
+    --text-light: #6b7280;
+    --bg-white: #ffffff;
+    --bg-light: #f9fafb;
+    --bg-lighter: #f3f4f6;
+    --border: #e5e7eb;
+
+    --category-1: #06b6d4; /* cyan */
+    --category-2: #8b5cf6; /* purple */
+    --category-3: #ef4444; /* red */
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+    min-height: 100vh;
+    padding: 3rem 1rem;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Title */
+.main-title {
+    font-size: 3rem;
+    font-weight: 800;
+    text-align: center;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    text-align: center;
+    color: var(--text-medium);
+    margin-bottom: 4rem;
+}
+
+/* Diagram Container */
+.diagram-container {
+    background: var(--bg-white);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    margin-bottom: 3rem;
+}
+
+/* Root Problem */
+.root-problem {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.problem-box {
+    display: inline-block;
+    padding: 1.5rem 2.5rem;
+    border-radius: 12px;
+    border: 3px solid;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background: var(--bg-white);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.problem-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.problem-box.root {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-color: #1e293b;
+    color: white;
+}
+
+.problem-box.root h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Main Branches */
+.main-branches {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    position: relative;
+    margin-top: 3rem;
+}
+
+.branch {
+    position: relative;
+}
+
+.branch-connector {
+    width: 3px;
+    height: 60px;
+    background: linear-gradient(180deg, var(--text-dark) 0%, var(--border) 100%);
+    margin: 0 auto;
+}
+
+.branch-head {
+    margin-bottom: 2rem;
+}
+
+.problem-box.main-category {
+    width: 100%;
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+}
+
+.problem-box.main-category.category-1 {
+    border-color: var(--category-1);
+    background: linear-gradient(135deg, var(--category-1), #0891b2);
+    color: white;
+}
+
+.problem-box.main-category.category-2 {
+    border-color: var(--category-2);
+    background: linear-gradient(135deg, var(--category-2), #7c3aed);
+    color: white;
+}
+
+.problem-box.main-category.category-3 {
+    border-color: var(--category-3);
+    background: linear-gradient(135deg, var(--category-3), #dc2626);
+    color: white;
+}
+
+.problem-box.main-category h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Sub Branches */
+.sub-branches {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sub-branch {
+    position: relative;
+}
+
+.sub-connector {
+    width: 3px;
+    height: 30px;
+    background: var(--border);
+    margin: 0 auto;
+}
+
+.problem-box.sub-item {
+    width: 100%;
+    padding: 1.25rem;
+    border-color: var(--border);
+    background: var(--bg-lighter);
+}
+
+.problem-box.sub-item:hover {
+    border-color: var(--primary);
+    background: white;
+}
+
+.problem-box.sub-item.critical {
+    border-color: var(--danger);
+    border-width: 3px;
+}
+
+.problem-box.sub-item h4 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.problem-box.sub-item p {
+    font-size: 0.95rem;
+    color: var(--text-medium);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.problem-box.sub-item strong {
+    color: var(--danger);
+}
+
+/* Additional Issues */
+.additional-issues {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 3px dashed var(--border);
+}
+
+.issue-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.issue-box {
+    padding: 2rem;
+    border-radius: 12px;
+    border: 3px solid;
+    background: var(--bg-white);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.issue-box.equity {
+    border-color: var(--warning);
+    background: #fffbeb;
+}
+
+.issue-box.effects {
+    border-color: var(--secondary);
+    background: #f5f3ff;
+}
+
+.issue-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.issue-box h4 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-dark);
+}
+
+.issue-box p {
+    font-size: 1.05rem;
+    color: var(--text-medium);
+    line-height: 1.6;
+}
+
+/* Summary Section */
+.summary-section {
+    background: var(--bg-white);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    margin-bottom: 3rem;
+}
+
+.summary-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-dark);
+}
+
+.impact-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.impact-card {
+    background: var(--bg-lighter);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid var(--border);
+    position: relative;
+    padding-top: 3.5rem;
+}
+
+.impact-number {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.impact-card h4 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+    text-align: center;
+}
+
+.impact-card p {
+    font-size: 1.05rem;
+    color: var(--text-medium);
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Solution Pointer */
+.solution-pointer {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+}
+
+.solution-pointer h3 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.solution-highlights {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.solution-item {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.solution-item .check {
+    font-size: 1.75rem;
+    flex-shrink: 0;
+}
+
+.solution-item p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.solution-item strong {
+    font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .main-branches {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .branch-connector {
+        display: none;
+    }
+
+    .impact-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .solution-highlights {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .diagram-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .problem-box.root h2 {
+        font-size: 1.4rem;
+    }
+
+    .issue-row {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-section h2 {
+        font-size: 2rem;
+    }
+
+    .solution-pointer h3 {
+        font-size: 1.75rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+    }
+
+    .diagram-container,
+    .summary-section {
+        box-shadow: none;
+        border: 1px solid var(--border);
+    }
+
+    .problem-box:hover {
+        transform: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+}
